@@ -1,0 +1,20 @@
+INCIDENT & ROOT CAUSE ANALYSIS REPORT: INC-2025-014
+Date of Incident: 2025-06-02
+Time of Outage: 03:15 AM
+Equipment ID: P-101 (Crude Transfer Pump)
+Unit: Unit 12 - Distillation Yard
+Incident Lead: R. Vance (Operations Manager)
+
+INCIDENT DESCRIPTION:
+At 03:15 AM, high hydrocarbon leak detector alarm triggered near P-101. Local operator observed liquid crude leaking from mechanical seal housing at a rate of ~15 liters/min. Emergency shutdown (ESD) activated remotely by Console Officer. Total unplanned downtime: 14.5 hours.
+
+ROOT CAUSE ANALYSIS (RCA):
+1. Immediate Cause: Primary mechanical seal face fractured due to thermal shock and dry running.
+2. Root Cause: Seal flush plan API Plan 11 line was choked with particulate debris from un-cleaned suction strainer S-101. Blockage starved the seal cavity of cooling lubrication.
+3. Contributing Factor: Strainer differential pressure gauge DP-101 was out of calibration and failed to alert operators of high differential pressure across S-101 prior to failure.
+
+CORRECTIVE & PREVENTIVE ACTIONS (CAPA):
+- Replaced damaged mechanical seal assembly on P-101.
+- Flushed seal piping Plan 11 and cleaned strainer S-101.
+- Updated SOP-LOTO-204 to mandate seal flush line flow verification prior to pump start.
+- Calibrated differential pressure transmitter DP-101.

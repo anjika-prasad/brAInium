@@ -1,0 +1,34 @@
+### Health check
+GET http://localhost:8000/health
+
+### Ingest a document (update the file path before running)
+POST http://localhost:8000/ingest?doc_type=work_order
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="sample.pdf"
+Content-Type: application/pdf
+
+< ./sample_data/sample.pdf
+--boundary--
+
+### Ask the copilot (semantic question)
+POST http://localhost:8000/query
+Content-Type: application/json
+
+{
+  "question": "What does the SOP say about lockout-tagout for V-204A?",
+  "top_k": 8
+}
+
+### Ask the copilot (relationship / graph question)
+POST http://localhost:8000/query
+Content-Type: application/json
+
+{
+  "question": "Which pumps have failed more than twice this year and what were the root causes?",
+  "top_k": 8
+}
+
+### Load an equipment neighborhood from the graph
+GET http://localhost:8000/graph/neighborhood?entity_id=P-101&depth=2

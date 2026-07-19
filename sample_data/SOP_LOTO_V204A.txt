@@ -1,0 +1,21 @@
+STANDARD OPERATING PROCEDURE: SOP-LOTO-204
+Doc Ref: OISD-STD-105 / PESO-REG-2024
+Title: Hazardous Material Isolation Procedure for Pump P-101 Suction Line & Valve V-204A
+Effective Date: 2024-11-01
+Author: Safety & Operations Compliance Bureau
+
+1. PURPOSE & SCOPE:
+This procedure details the mandatory Lockout/Tagout (LOTO) requirements prior to performing mechanical, electrical, or instrument maintenance on Crude Transfer Pump P-101 and associated suction isolation valve V-204A.
+
+2. ISOLATION STEPS:
+2.1 Notify Unit 12 Operations Console Officer prior to initiating isolation.
+2.2 Isolate main power supply to Motor M-101 at MCC Panel-4, Breaker B-12. Apply red LOTO padlock and danger tag.
+2.3 Manually close upstream suction isolation valve V-204A. Apply mechanical valve lock handle clamp and yellow lockout tag.
+2.4 Close downstream discharge valve V-204B.
+2.5 Open bleed valve V-204C into hydrocarbon drain funnel to verify complete depressurization.
+2.6 Check zero-energy state on local pressure gauge PG-101. Pressure must indicate 0.0 PSIG.
+
+3. SPECIAL SAFETY REQUIREMENTS:
+- Double block and bleed (DBB) isolation is mandatory for volatile liquid lines exceeding 150 PSIG or operating above 60°C.
+- Nitrogen purging required prior to opening seal housing or suction flange on P-101.
+- Technician J. Miller or designated Competent Person must sign the LOTO Master Permit before work initiation.

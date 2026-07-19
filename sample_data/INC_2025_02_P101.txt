@@ -1,0 +1,19 @@
+INCIDENT & ROOT CAUSE ANALYSIS REPORT: INC-2025-032
+Date of Incident: 2025-07-11
+Time of Outage: 14:40 PM
+Equipment ID: P-101 (Crude Transfer Pump)
+Unit: Unit 12 - Distillation Yard
+Incident Lead: S. Kumar (Senior Reliability Engineer)
+
+INCIDENT DESCRIPTION:
+Crude Transfer Pump P-101 tripped on High Bearing Temperature (DE Bearing > 95°C). Secondary trip activated high vibration alarm at 7.1 mm/s RMS. Pump shut down automatically. Total unplanned downtime: 8.0 hours.
+
+ROOT CAUSE ANALYSIS (RCA):
+1. Immediate Cause: Catastrophic spalling of inboard drive-end ball bearing rollers (SKF 6314-C3).
+2. Root Cause: Accelerated bearing wear resulting from uncorrected shaft misalignment following emergency seal replacement in June (Incident INC-2025-014).
+3. Contributing Factor: Recommendations from inspection report IR-2025-0589 (which flagged bearing vibration degradation at 4.2 g's) were deferred due to high production demand.
+
+CORRECTIVE & PREVENTIVE ACTIONS (CAPA):
+- Replaced drive-end bearing SKF 6314-C3 and non-drive end bearing SKF 6312.
+- Completed precision laser alignment of shaft (P-101 motor M-101 coupling offset < 0.01mm).
+- Mandated that no vibration warning from IR reports can be deferred beyond 30 days without Chief Engineer approval.

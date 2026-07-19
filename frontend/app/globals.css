@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #0b1f33;
+  color: #edeae1;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.font-mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.blueprint-bg {
+  background-color: #0b1f33;
+  background-image:
+    linear-gradient(rgba(46, 90, 133, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 90, 133, 0.28) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+::selection {
+  background-color: #e8a33d;
+  color: #0b1f33;
+}
+
+/* visible keyboard focus, per accessibility floor */
+:focus-visible {
+  outline: 2px solid #e8a33d;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

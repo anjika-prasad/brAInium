@@ -1,0 +1,19 @@
+PLANT MAINTENANCE WORK ORDER: WO-8842
+Date: 2025-03-14
+Equipment ID: P-101 (Crude Transfer Centrifugal Pump)
+Location: Unit 12 - Distillation Yard
+Technician: J. Miller (Senior Millwright)
+Supervisor: R. Vance
+
+WORK DESCRIPTION:
+Performed scheduled quarterly maintenance on crude transfer pump P-101.
+Inspected mechanical seal housing and replaced mechanical seal packing (Part #SK-4421).
+Cleaned suction strainer S-101 and flushed seal oil line.
+Realigned pump shaft to driver motor M-101 using laser alignment tool (Tolerance: 0.02mm).
+Verified isolation valve V-204A was in fully open position prior to recommissioning.
+
+OBSERVATIONS & ACTIONS:
+- Minor carbon buildup observed on primary seal face.
+- Lube oil sample taken for spectrographic analysis.
+- Operational test completed: Vibration amplitude 1.8 mm/s RMS (within ISO 10816 Class II acceptable limits).
+- Equipment returned to service at 16:30 hrs.

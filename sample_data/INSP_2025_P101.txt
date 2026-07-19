@@ -1,0 +1,23 @@
+RELIABILITY & ASSET INTEGRITY INSPECTION REPORT
+Report Ref: IR-2025-0589
+Date of Inspection: 2025-05-10
+Equipment ID: P-101 (Crude Transfer Pump)
+Inspector: S. Kumar (Senior Reliability Engineer)
+
+SUMMARY OF FINDINGS:
+Full non-destructive testing (NDT) and vibration spectrum analysis performed on P-101.
+
+1. VIBRATION ANALYSIS:
+Vibration monitoring at inboard bearing housing showed peak acceleration of 4.2 g's at 1x RPM frequency, indicating mild mechanical unbalance and micro-cavitation.
+Comparing findings with prior maintenance log WO-8842, vibration levels increased by 35% over a 60-day window.
+
+2. THERMOGRAPHIC SURVEY:
+Drive-end bearing temperature recorded at 78°C (Threshold limit: 80°C). Non-drive end bearing recorded at 52°C.
+
+3. ULTRASONIC THICKNESS TESTING (UTT):
+Suction nozzle piping near valve V-204A indicates nominal thickness of 8.2mm (Original wall thickness: 9.5mm). Corrosion rate calculated at 0.4 mm/year.
+
+RECOMMENDATIONS & ACTION ITEMS:
+- Schedule replacement of drive-end bearing (SKF 6314-C3) within 90 days.
+- Inspect suction strainer S-101 for partial blockage causing suction cavitation on P-101.
+- Re-evaluate lube oil flush cycle per OEM manual recommendations.
