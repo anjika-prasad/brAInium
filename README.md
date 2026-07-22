@@ -16,52 +16,7 @@ Plain document RAG can only answer *"what does the SOP say."* It cannot answer *
 
 ## 🏗️ Architecture
 
-```
-                     ┌─────────────────────────────────────────┐
-                     │              Next.js Frontend             │
-                     │  Copilot Chat · Ingest Console · Graph View│
-                     └───────────────────┬─────────────────────┘
-                                         │ REST
-                     ┌───────────────────▼─────────────────────┐
-                     │              FastAPI Backend               │
-                     │                                             │
-                     │  /ingest ─┐                                 │
-   ┌────────────┐    │           ▼                                 │
-   │  Upload     │───▶│   ┌───────────────┐   ┌──────────────────┐ │
-   │  PDF/Image  │    │   │ Docling parser │──▶│ PaddleOCR fallback│ │
-   └────────────┘    │   │ (layout-aware)│   │ (scanned pages)   │ │
-                     │   └───────┬───────┘   └──────────────────┘ │
-                     │           ▼                                 │
-                     │   ┌───────────────┐                         │
-                     │   │  Chunking     │                         │
-                     │   └───────┬───────┘                         │
-                     │           ▼                                 │
-                     │   ┌────────────────────────┐                │
-                     │   │ LLM Entity/Relationship  │               │
-                     │   │ Extraction (fixed schema)│               │
-                     │   └────┬──────────────┬─────┘                │
-                     │        ▼              ▼                      │
-                     │  ┌───────────┐  ┌─────────────┐              │
-                     │  │ bge-large  │  │  Neo4j      │              │
-                     │  │ embeddings │  │  graph      │              │
-                     │  └─────┬─────┘  │  upsert     │              │
-                     │        ▼        └──────┬──────┘              │
-                     │  ┌───────────┐         │                     │
-                     │  │  Qdrant    │         │                     │
-                     │  │  vectors   │         │                     │
-                     │  └─────┬─────┘         │                     │
-                     │        │                │                     │
-                     │  /query ▼                ▼                    │
-                     │  ┌──────────────────────────────┐             │
-                     │  │  Query Planner (vector/graph/  │            │
-                     │  │  hybrid) + Hybrid Retrieval     │            │
-                     │  └──────────────┬───────────────┘             │
-                     │                 ▼                              │
-                     │        LLM Answer + Citations                  │
-                     └─────────────────────────────────────────────┘
-```
-
----
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cfa9bfaf-1493-47e0-8f73-17654a51f699" />
 
 ## 🛠️ Installation & Setup
 
