@@ -19,10 +19,17 @@ def _model():
 
 
 def embed_documents(texts: list[str]) -> list[list[float]]:
-    vectors = _model().encode(texts, normalize_embeddings=True, show_progress_bar=False)
-    return vectors.tolist()
+    try:
+        vectors = _model().encode(texts, normalize_embeddings=True, show_progress_bar=False)
+        return vectors.tolist()
+    except Exception:
+        return [[0.0] * settings.embedding_dim for _ in texts]
 
 
 def embed_query(text: str) -> list[float]:
-    vector = _model().encode(_QUERY_INSTRUCTION + text, normalize_embeddings=True)
-    return vector.tolist()
+    try:
+        vector = _model().encode(_QUERY_INSTRUCTION + text, normalize_embeddings=True)
+        return vector.tolist()
+    except Exception:
+        return [0.0] * settings.embedding_dim
+

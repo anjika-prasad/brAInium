@@ -129,9 +129,14 @@ def get_llm_client() -> LLMClient:
     global _singleton
     if _singleton is None:
         provider = settings.llm_provider.lower()
-        if provider == "openai" and not settings.openai_api_key:
+        
+        # Detect if keys are empty or still containing standard placeholder strings
+        is_openai_placeholder = not settings.openai_api_key or "xxxx" in settings.openai_api_key or "YOUR_" in settings.openai_api_key
+        is_gemini_placeholder = not settings.gemini_api_key or "xxxx" in settings.gemini_api_key or "YOUR_" in settings.gemini_api_key
+        
+        if provider == "openai" and is_openai_placeholder:
             provider = "demo"
-        elif provider == "gemini" and not settings.gemini_api_key:
+        elif provider == "gemini" and is_gemini_placeholder:
             provider = "demo"
 
         provider_cls = _CLIENTS.get(provider, FallbackDemoClient)
