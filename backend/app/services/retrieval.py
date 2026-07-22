@@ -41,15 +41,27 @@ Respond in plain, direct operational language a field technician can act on.
 """
 
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 def _plan(question: str) -> dict:
-    llm = get_llm_client()
-    raw = llm.complete(_PLANNER_PROMPT, question, json_mode=True)
-    plan = safe_json_parse(raw)
-    if "error" in plan:
-        # Fail safe to hybrid rather than guessing the wrong single mode.
+    try:
+        llm = get_llm_client()
+        raw = llm.complete(_PLANNER_PROMPT, question, json_mode=True)
+        plan = safe_json_parse(raw)
+        if "error" in plan:
+            # Fail safe to hybrid rather than guessing the wrong single mode.
+            tags = re.findall(r"\b[A-Z]{1,3}-\d{2,4}[A-Z]?\b", question)
+            return {"mode": "hybrid", "equipment_tags": tags, "reasoning": "planner_fallback"}
+        return plan
+    except Exception as e:
+        logger.warning(f"Query planner LLM failed ({e}). Using offline regex planner fallback.")
         tags = re.findall(r"\b[A-Z]{1,3}-\d{2,4}[A-Z]?\b", question)
-        return {"mode": "hybrid", "equipment_tags": tags, "reasoning": "planner_fallback"}
-    return plan
+        mode = "hybrid" if tags else "vector"
+        if "fail" in question.lower() or "incident" in question.lower() or "history" in question.lower():
+            mode = "graph"
+        return {"mode": mode, "equipment_tags": tags, "reasoning": "regex_planner_fallback"}
 
 
 def answer_query(req: QueryRequest) -> QueryResponse:
@@ -98,10 +110,16 @@ def answer_query(req: QueryRequest) -> QueryResponse:
             graph_paths_used=graph_paths,
         )
 
-    llm = get_llm_client()
-    system = "You are an industrial knowledge copilot for field technicians and engineers. Be precise, cite sources, and never guess on safety-relevant claims."
-    user_prompt = _ANSWER_PROMPT.format(question=req.question, context="\n\n".join(context_blocks))
-    answer_text = llm.complete(system, user_prompt, json_mode=False)
+    try:
+        llm = get_llm_client()
+        system = "You are an industrial knowledge copilot for field technicians and engineers. Be precise, cite sources, and never guess on safety-relevant claims."
+        user_prompt = _ANSWER_PROMPT.format(question=req.question, context="\n\n".join(context_blocks))
+        answer_text = llm.complete(system, user_prompt, json_mode=False)
+    except Exception as e:
+        logger.warning(f"Answer LLM call failed ({e}). Using offline answer generator fallback.")
+        from app.services.llm_client import FallbackDemoClient
+        fallback_llm = FallbackDemoClient()
+        answer_text = fallback_llm.complete("", req.question, json_mode=False)
 
     avg_score = sum(s.score for s in sources) / len(sources) if sources else 0.6
     confidence = round(min(0.95, avg_score), 2)
