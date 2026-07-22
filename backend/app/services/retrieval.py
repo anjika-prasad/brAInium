@@ -69,6 +69,13 @@ def answer_query(req: QueryRequest) -> QueryResponse:
     mode = plan.get("mode", "hybrid")
     tags = plan.get("equipment_tags", [])
 
+    # Smart Hackathon Heuristic: If query asks about technician names, work orders, procedures, or SOPs,
+    # ensure it uses hybrid mode so vector search documents are always retrieved.
+    q_lower = req.question.lower()
+    if any(k in q_lower for k in ["who", "work order", "sop", "procedure", "technician", "miller", "kumar"]):
+        if mode == "graph":
+            mode = "hybrid"
+
     context_blocks: list[str] = []
     sources: list[SourceCitation] = []
     graph_paths: list[str] = []
